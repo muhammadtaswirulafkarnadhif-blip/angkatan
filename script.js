@@ -452,4 +452,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     goToSlide(0);
     tickAutoplay();
-});aaaaaaa
+});
