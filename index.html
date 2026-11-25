@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeTIK II G V | Yearbook Interaktif</title>
+    <!-- Google Fonts: Editorial Serif + Handwritten Polaroid + Modern UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Canvas Confetti -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ================= 1. CURTAIN INTRO SCREEN ================= -->
+    <div class="intro-curtain" id="introCurtain">
+        <div class="intro-shapes">
+            <span class="shape shape-1"></span>
+            <span class="shape shape-2"></span>
+            <span class="shape shape-3"></span>
+        </div>
+
+        <div class="intro-content">
+            <p class="intro-welcome">Welcome to</p>
+            <h1 class="intro-title">PeTIK II <span>G V</span></h1>
+            <p class="intro-tagline">Satu angkatan, beribu cerita.</p>
+            <button class="btn-enter" id="enterBtn">
+                <span>Buka</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ================= FLOATING NAVBAR ================= -->
+    <header class="floating-nav" id="floatingNav">
+        <a href="#hero" class="nav-brand">GEN <span>5</span></a>
+
+        <nav class="nav-links">
+            <a href="#hero" class="nav-item active">Home</a>
+            <a href="#members" class="nav-item">Members</a>
+            <a href="#memories" class="nav-item">Memories</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeToggle" title="Ganti Tema (Terang/Gelap)">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="icon-btn" id="replayIntroBtn" title="Tampilkan Layar Pembuka">
+                <i class="fa-solid fa-rotate-left"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= 2. HERO GROUP PHOTO ================= -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="hero-header">
+                <span class="pill-badge"><i class="fa-solid fa-sparkles"></i> CLASS OF 2026</span>
+                <h1 class="brand-heading">PeTIK II G V</h1>
+                <p class="hero-subtitle">Bersama bertumbuh, berkarya, dan menjadi lebih baik.</p>
+            </div>
+
+            <!-- Frame Foto Angkatan Utama -->
+            <div class="hero-photo-wrapper tilt-box" id="heroPhotoBox">
+                <span class="tape tape-left"></span>
+                <span class="tape tape-right"></span>
+                <!-- Ganti src dengan foto angkatanmu (misal: img/foto-angkatan.jpg) -->
+                <img
+                    src="assets/WhatsApp Image 2026-10-02 at 21.43.30.jpeg"
+                    alt="Foto Bersama Angkatan"
+                    class="hero-photo"
+                >
+                <div class="hero-photo-badge">
+                    <i class="fa-solid fa-users"></i>
+                    <span id="memberCountBadge">48 Students</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Running Ticker Energik -->
+        <div class="marquee-wrap">
+            <div class="marquee-track">
+                <span>★ SOLIDARITY FOREVER</span>
+                <span>★ PeTIK II GEN 5</span>
+                <span>★ MEMORIES NEVER VADE</span>
+                <span>★ PENGEMBANGAN PERANGKAT LUNAK</span>
+                <span>★ DIGITAL &amp; MARKETING</span>
+                <span>★ SOLIDARITY FOREVER</span>
+                <span>★ PeTIK II GEN 5</span>
+                <span>★ PENGEMBANGAN PERANGKAT LUNAK</span>
+                <span>★ MEMORIES NEVER FADE</span>
+                <span>★ DIGITAL &amp; MARKETING</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3. MEMBERS (48 POLAROID GRID) ================= -->
+    <section id="members" class="members-section">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="serif-title">Members</h2>
+                <p class="section-sub">Arahkan kursor atau klik kartu Polaroid untuk lihat detail &amp; beri apresiasi!</p>
+            </div>
+
+            <!-- Toolbar Interaktif: Search + Randomizer (Tanpa Filter Pengurus/Kreatif) -->
+            <div class="members-toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="memberSearch" placeholder="Cari nama, @username, atau quote...">
+                </div>
+
+                <div class="toolbar-right">
+                    <span class="count-pill" id="shownCount">48 / 48 Anggota</span>
+                    <button class="btn-random" id="randomBtn">
+                        <i class="fa-solid fa-dice"></i> Acak Teman
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid Polaroid 4 Kolom (Diisi otomatis oleh script.js) -->
+            <div class="polaroid-grid" id="membersGrid"></div>
+            <p class="empty-state" id="emptyState" hidden>Tidak ada anggota yang cocok dengan pencarianmu.</p>
+        </div>
+    </section>
+
+    <!-- ================= 4. OUR MEMORIES (15 FOTO SLIDER) ================= -->
+    <section id="memories" class="memories-section">
+        <div class="container">
+            <div class="section-head">
+                <h2 class="serif-title">Our Memories</h2>
+                <p class="section-sub">Geser, klik panah, atau tekan tombol kanan/kiri di keyboard untuk melihat 15 momen kami.</p>
+            </div>
+
+            <div class="carousel-card">
+                <div class="carousel-viewport" id="carouselViewport">
+                    <div class="carousel-track" id="carouselTrack"></div>
+
+                    <!-- Navigasi Panah -->
+                    <button class="carousel-arrow arrow-prev" id="prevSlide" aria-label="Foto sebelumnya">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-arrow arrow-next" id="nextSlide" aria-label="Foto berikutnya">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                    <!-- Info Overlay di Bawah Foto -->
+                    <div class="carousel-caption-bar">
+                        <div>
+                            <span class="slide-date" id="slideDate">2026</span>
+                            <h3 class="slide-title" id="slideTitle">Judul Momen</h3>
+                        </div>
+                        <div class="carousel-controls-right">
+                            <span class="slide-counter" id="slideCounter">1 / 15</span>
+                            <button class="mini-ctrl-btn" id="autoplayToggle" title="Pause / Play Otomatis">
+                                <i class="fa-solid fa-pause"></i>
+                            </button>
+                            <button class="mini-ctrl-btn" id="fullscreenBtn" title="Perbesar Foto">
+                                <i class="fa-solid fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar Autoplay -->
+                    <div class="carousel-progress-bg">
+                        <div class="carousel-progress-fill" id="carouselProgress"></div>
+                    </div>
+                </div>
+
+                <!-- 15 Indikator Dots -->
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+    </section>
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container">
+            <p class="dev-label"><i class="fa-solid fa-code"></i> DEVELOPED BY</p>
+            <p class="dev-name">Nadill</p>
+            <p class="dev-role">Web Developer &amp; UI Designer</p>
+            <div class="dev-links">
+                <a href="https://www.instagram.com/afkar_naa?utm_source=ig_web_button_share_sheet&fqnt=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://github.com/muhammadtaswirulafkarnadhif-blip" target="_blank" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- ================= MODAL DETAIL POLAROID ================= -->
+    <div class="modal-backdrop" id="memberModal">
+        <div class="modal-polaroid">
+            <button class="modal-close" id="modalClose" aria-label="Tutup">&times;</button>
+            <div class="modal-img-wrap">
+                <img src="" alt="" id="modalImg">
+                <span class="modal-role" id="modalRole">GEN 5</span>
+            </div>
+            <h3 class="modal-name" id="modalName">Nama Lengkap</h3>
+            <p class="modal-quote" id="modalQuote">"Quote"</p>
+            <div class="modal-footer-btns">
+                <a href="#" target="_blank" class="btn-ig" id="modalHandle">
+                    <i class="fa-brands fa-instagram"></i> <span>@username</span>
+                </a>
+                <button class="btn-like" id="modalLikeBtn">
+                    <i class="fa-solid fa-heart"></i> <span id="modalLikeCount">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- ================= LIGHTBOX FULLSCREEN MEMORIES ================= -->
+    <div class="lightbox" id="lightbox">
+        <button class="modal-close" id="lightboxClose" aria-label="Tutup">&times;</button>
+        <img src="" alt="Preview Memori" id="lightboxImg">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
